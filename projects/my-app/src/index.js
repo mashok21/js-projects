@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
+import App from './App';
 // import ShowProgress from './exercises/ShowProgress'
 // import MarkAllAsComplete from './exercises/MarkAllAsComplete'
 // import EmployeeContainer from './exercises/displayView/EmployeeContainer'
@@ -31,7 +31,7 @@ import './index.css';
 
 
 // import App from './exercises/ExercisesReDo/ShowProgress/App'
-import App from './exercises/UserManagement/App'
+// import App from './exercises/UserManagement/App'
 
 
 import reportWebVitals from './reportWebVitals';

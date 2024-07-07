@@ -5,18 +5,15 @@ import CategoriesContext from "./CategoriesContext"
 
 export default function CategoriesList () {
 
-  const {categories, handleCategoryRemoveComponent} = useContext(CategoriesContext)
+  const {categories, categoriesDispatch} = useContext(CategoriesContext)
   const urlCat = `http://localhost:3010/api/categories`
+
 
   const handleCategoryRemove = (category) => {
     const urlId = `${urlCat}/${category._id}`
     axios.delete(urlId)
-    .then(response=>{
-      handleCategoryRemoveComponent(response.data)
-    })
-    .catch(err=>{
-      console.error(err)
-    })
+    .then(response => categoriesDispatch({type: "CAT_REMOVE", payload: response.data}))
+    .catch(err=> console.error(err))
   }
   
   return (

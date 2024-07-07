@@ -16,7 +16,7 @@ export default function ExpenseItem (props) {
     const handleSetId = () => {
         expensesDispatch({type: "SET_EDIT_ID", payload: _id})
     }
-
+    
     return (<tr>
                 <td>{description}</td>
                 <td>{expenseDate}</td>

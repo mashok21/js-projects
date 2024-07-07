@@ -9,7 +9,7 @@ export default function CategoryForm () {
     const [categoryClientErrors, setCategoryClientErrors] = useState('')
     const categoryErrors = {}
 
-    const {handleAddCategory} = useContext(CategoriesContext)
+    const {categoriesDispatch} = useContext(CategoriesContext)
 
     const urlCat = `http://localhost:3010/api/categories`
 
@@ -26,7 +26,7 @@ const handleCategoryNameSubmit = (e) => {
     if(Object.keys(categoryErrors).length === 0){
         axios.post(urlCat, formData)
         .then(response => {
-        handleAddCategory(response.data)
+        categoriesDispatch({type: "CAT_ADD", payload:response.data})
         setCategoryServerErrors([])
         setCategoryClientErrors({})
         })
