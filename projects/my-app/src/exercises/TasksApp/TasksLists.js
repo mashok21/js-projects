@@ -16,14 +16,16 @@ export default function TasksLists () {
         <h3> Tasks Lists </h3>
 
         {display.map((item, index) => {
-                return (<>            
+                return (<>   
                     <input 
                         type="radio"
+                        id="status"
                         value={item}
                         checked={currentStatus === item}
                         onChange={() =>setCurrentStatus(item)}
                     />
-                    <label>{item}</label>                    
+                    <label htmlFor="status">{item}</label>             
+                                    
                 </>)})}
         
         <ul>

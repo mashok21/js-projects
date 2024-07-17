@@ -12,7 +12,7 @@ export default function TaskItems (props) {
     
     return (<>
             <ul>
-                <li><input type="checkbox" onChange={() => handleStatus(id)}/>{title} - {description} - {status}</li>
+                <li><input type="checkbox" id="status" onChange={() => handleStatus(id)}/>{title} - {description} - {status}</li>
             </ul>
     </>)
 }
