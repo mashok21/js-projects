@@ -36,14 +36,15 @@ import './index.css';
 // import RootApp from './exercises/QuizApp/App'
 // import QuizApp from './exercises/ExercisesReDo/QuizApp/QuizApp'
 // import UserDataS2S from './exercises/UserDataS2S';
-import WeatherApp from './exercises/WeatherApp';
+// import WeatherApp from './exercises/WeatherApp';
+import RootApp from './fe_user_auth/App.js';
 
 
 import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <div><WeatherApp   /></div>
+  <div><RootApp   /></div>
 );
 
 // If you want to start measuring performance in your app, pass a function
