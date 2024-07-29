@@ -1,4 +1,5 @@
 import express from "express"
+import cors from 'cors'
 import dotenv from "dotenv"
 dotenv.config()
 import {checkSchema} from "express-validator"
@@ -9,8 +10,10 @@ import { userRegisterSchema, userLoginSchema } from "./app/validation/user-valid
 
 
 const app = express()
+
 const port = 3050
 app.use(express.json())
+app.use(cors())
 configureDB()
 
 app.get('/home', (req, res) => {
@@ -19,11 +22,11 @@ app.get('/home', (req, res) => {
     })
 })
 
-app.post('/register', checkSchema(userRegisterSchema), usersCtrl.register)
+app.post('/api/users/register', checkSchema(userRegisterSchema), usersCtrl.register)
 
-app.post('/login', checkSchema(userLoginSchema), usersCtrl.login)
+app.post('/api/users/login', checkSchema(userLoginSchema), usersCtrl.login)
 
-app.get('/profile', authenticateUser, usersCtrl.profile)
+app.get('/api/users/account', authenticateUser, usersCtrl.profile)
 
 app.listen(port, () => {
     console.log('server running on port', port)

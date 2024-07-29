@@ -37,7 +37,7 @@ import './index.css';
 // import QuizApp from './exercises/ExercisesReDo/QuizApp/QuizApp'
 // import UserDataS2S from './exercises/UserDataS2S';
 // import WeatherApp from './exercises/WeatherApp';
-import RootApp from './fe_user_auth/App.js';
+import RootApp from './27_july_fe_user_auth/RootApp'
 
 
 import reportWebVitals from './reportWebVitals';
