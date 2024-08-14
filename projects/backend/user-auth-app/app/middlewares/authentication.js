@@ -8,6 +8,8 @@ export default function authenticateUser(req, res, next){
     try {
         const tokenData = jwt.verify(token, process.env.JWT_SECRET)
         req.userId = tokenData.userId
+        req.role = tokenData.role
+        console.log('Authenticated user ID:', req.userId); // Log the userId
         next()
     } catch (err) {
         return res.status(401).json({errors: err.message})

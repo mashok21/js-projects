@@ -2,7 +2,7 @@ import {useReducer, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import AuthContext from '../context/AuthContext'
-import axios from 'axios'
+import axios from '../config/axios'
 const initialState = {
     user: null, 
     isLoggedIn: false 
@@ -30,7 +30,7 @@ function AuthProvider(props){
         (async () => {
             if(localStorage.getItem('token')) {
                 try {
-                    const userResponse = await axios.get('http://localhost:3050/api/users/account', { headers: { 'Authorization': localStorage.getItem('token')}})
+                    const userResponse = await axios.get('/api/users/account', { headers: { 'Authorization': localStorage.getItem('token')}})
                     dispatch({ type: 'LOGIN_USER', payload: userResponse.data })
                 } catch(err) {
                     
@@ -41,7 +41,7 @@ function AuthProvider(props){
 
     const handleRegister = async (formData) => {
         try { 
-            const response = await axios.post('http://localhost:3050/api/users/register', formData)
+            const response = await axios.post('/api/users/register', formData)
             toast('Successfully Registered', { autoClose: 2000 })
             navigate('/login')
         } catch(err) {
@@ -52,14 +52,13 @@ function AuthProvider(props){
 
     const handleLogin = async (formData) => {
         try {
-            const response = await axios.post('http://localhost:3050/api/users/login', formData)
+            const response = await axios.post('/api/users/login', formData)
             localStorage.setItem('token', response.data.token)
             toast('successfully logged in')
-            const userResponse = await axios.get('http://localhost:3050/api/users/account', { headers: { 'Authorization': localStorage.getItem('token')}})
+            const userResponse = await axios.get('/api/users/account', { headers: { 'Authorization': localStorage.getItem('token')}})
             dispatch({ type: 'LOGIN_USER', payload: userResponse.data })
             navigate('/dashboard')
         } catch(err) {
-
         }
     }
 

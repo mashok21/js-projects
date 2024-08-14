@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import MyNotes from './pages/MyNotes';
 
 function App() {
   const { state, handleLogout} = useContext(AuthContext)
@@ -21,6 +22,7 @@ function App() {
             <>
              <li><Link to="/dashboard">Dashboard</Link></li>
              <li><Link to="/profile">Profile</Link></li>
+             <li><Link to="/my-notes">My Notes</Link></li>
              <li><button onClick={handleLogout}>logout</button></li>
             </>
           ): (
@@ -42,6 +44,11 @@ function App() {
           <Route path="/profile" element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          } />
+          <Route path="/my-notes" element={
+            <PrivateRoute>
+              <MyNotes />
             </PrivateRoute>
           } />
         </Routes>
