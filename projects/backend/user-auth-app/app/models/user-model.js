@@ -2,7 +2,11 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
     email: String, 
-    password: String
+    password: String,
+    role : {
+        type: String, 
+        default: 'user'
+    }
 }, {timestamps: true})
 
 const User = model("User", userSchema)
