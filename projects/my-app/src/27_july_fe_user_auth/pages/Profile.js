@@ -9,6 +9,7 @@ export default function Profile(){
         <div>
             <h2>Profile Page</h2>
             <p>email - { state.user.email } </p>
+            <p>role - { state.user.role } </p>
             <p>register date - { state.user.createdAt } </p>
         </div>
     )

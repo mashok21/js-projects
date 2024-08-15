@@ -1,4 +1,4 @@
-const authorizeUser = (permittedRoles) => {
+export const authorizeUser = (permittedRoles) => {
     return (req, res, next) => {
         if (permittedRoles.includes(req.role)) {
             next();
@@ -7,3 +7,4 @@ const authorizeUser = (permittedRoles) => {
         }
     };
 };
+

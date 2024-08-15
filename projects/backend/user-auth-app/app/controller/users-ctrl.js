@@ -74,7 +74,7 @@ usersCtrl.profile = async (req, res) => {
     }
 }
 
-usersCtrl.list = async (req, res) => {
+usersCtrl.listUsers = async (req, res) => {
     try{
         const users = await User.find()
         res.json(users)
@@ -85,7 +85,7 @@ usersCtrl.list = async (req, res) => {
 }
 
 usersCtrl.destroy =  async(req, res) => {
-    try{
+    try {
         const id = req.params.id
         if (id === req.userId){
             return res.status(400).json({error: "You cannot delete your own account"})
@@ -99,7 +99,6 @@ usersCtrl.destroy =  async(req, res) => {
         res.status(500).json({errors: 'Something went wrong'})
     }
 }
-
 
 usersCtrl.changeRole = async (req, res) => {
     try{

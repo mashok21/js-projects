@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import AuthContext from '../context/AuthContext'
+
 export default function Dashboard(){
     const { state } = useContext(AuthContext)
     if(!state.user) {

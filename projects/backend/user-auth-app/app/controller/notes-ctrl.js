@@ -75,6 +75,4 @@ notesCtrl.delete = async (req, res) => {
   }
 }
 
-
-
 export default notesCtrl
