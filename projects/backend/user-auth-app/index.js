@@ -7,6 +7,7 @@ import configureDB from "./config/db.js"
 import usersCtrl from "./app/controller/users-ctrl.js"
 import notesCtrl from "./app/controller/notes-ctrl.js"
 import authenticateUser from "./app/middlewares/authentication.js"
+import {authorizeUser} from "./app/middlewares/authorizeUser.js"
 import { userRegisterSchema, userLoginSchema } from "./app/validation/user-validation-schema.js"
 
 
@@ -24,10 +25,11 @@ app.get('/home', (req, res) => {
 })
 
 app.post('/api/users/register', checkSchema(userRegisterSchema), usersCtrl.register)
-
 app.post('/api/users/login', checkSchema(userLoginSchema), usersCtrl.login)
-
 app.get('/api/users/account', authenticateUser, usersCtrl.profile)
+app.get('/api/users/list', authenticateUser, authorizeUser(['admin', 'moderator']), usersCtrl.listUsers)
+app.delete('/api/users/:id', authenticateUser, authorizeUser(['admin']), usersCtrl.destroy)
+app.put('/api/users/change-role/:id', authenticateUser, authorizeUser(['admin']), usersCtrl.changeRole)
 
 app.get('/api/notes', authenticateUser, notesCtrl.list)
 app.post('/api/notes', authenticateUser, notesCtrl.create)
@@ -35,7 +37,7 @@ app.get('/api/notes/:id', authenticateUser, notesCtrl.show)
 app.put('/api/notes/:id', authenticateUser, notesCtrl.update)
 app.delete('/api/notes/:id', authenticateUser, notesCtrl.delete)
 app.get('/api/notes/list', authenticateUser, authorizeUser(['admin', 'moderator']), notesCtrl.list)
-app.delete('/api/users/:id', authenticateUser, authorizeUser(['admin']), usersCtrl.destroy)
+
 
 app.listen(port, () => {
     console.log('server running on port', port)

@@ -25,7 +25,7 @@ import './index.css';
 // import UserById from './exercises/UserById';
 // import SingleUser from './exercises/SingleUser';
 // import SelectedUser from './exercises/SelectedUser';
-import UsersSelect from './exercises/UsersSelect';
+// import UsersSelect from './exercises/UsersSelect';
 // import { EmployeeDepartment } from './exercises/department';
 // import { Tasks } from './exercises/tasks';
 // import App from './exercises/UserManagement/App'
@@ -37,14 +37,14 @@ import UsersSelect from './exercises/UsersSelect';
 // import QuizApp from './exercises/ExercisesReDo/QuizApp/QuizApp'
 // import UserDataS2S from './exercises/UserDataS2S';
 // import WeatherApp from './exercises/WeatherApp';
-// import RootApp from './27_july_fe_user_auth/RootApp'
+import RootApp from './27_july_fe_user_auth/RootApp'
 
 
 import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <div><UsersSelect   /></div>
+  <div><RootApp   /></div>
 );
 
 // If you want to start measuring performance in your app, pass a function

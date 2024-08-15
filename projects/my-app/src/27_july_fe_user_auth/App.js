@@ -10,6 +10,9 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import MyNotes from './pages/MyNotes';
+import ListUsers from './pages/ListUsers';
+import AuthorizeUser from './components/AuthorizeUser'
+import Forbidden from './pages/Forbidden'
 
 function App() {
   const { state, handleLogout} = useContext(AuthContext)
@@ -22,6 +25,7 @@ function App() {
             <>
              <li><Link to="/dashboard">Dashboard</Link></li>
              <li><Link to="/profile">Profile</Link></li>
+             {(state.user.role === 'admin' || state.user.role === 'moderator') && (<li><Link to="/list-users">List Users</Link></li>)}             
              <li><Link to="/my-notes">My Notes</Link></li>
              <li><button onClick={handleLogout}>logout</button></li>
             </>
@@ -51,8 +55,15 @@ function App() {
               <MyNotes />
             </PrivateRoute>
           } />
+          <Route path="/list-users" element={
+            <PrivateRoute>
+              <AuthorizeUser permittedRoles={['admin', 'moderator']}>
+                <ListUsers />
+              </AuthorizeUser>
+            </PrivateRoute>
+          } />
+        <Route path="/forbidden" element={<Forbidden />} />
         </Routes>
-
         <ToastContainer />
     </div>
   );
